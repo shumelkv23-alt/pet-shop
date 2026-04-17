@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" width="600" height="600">
+  <defs>
+    <radialGradient id="g" cx="50%" cy="40%" r="75%">
+      <stop offset="0%" stop-color="#E3F4EA"/>
+      <stop offset="100%" stop-color="#5FB895" stop-opacity="0.25"/>
+    </radialGradient>
+  </defs>
+  <rect width="600" height="600" fill="url(#g)"/>
+  <circle cx="340" cy="280" r="160" fill="#5FB895" opacity="0.18"/>
+  <g transform="translate(340 300) rotate(6)">
+    <text x="0" y="0" font-size="220" text-anchor="middle" dominant-baseline="central"
+          font-family="Apple Color Emoji, Segoe UI Emoji, sans-serif">🪶</text>
+  </g>
+  <text x="300" y="520" text-anchor="middle" font-family="Inter, Segoe UI, sans-serif"
+        font-size="28" font-weight="700" fill="#2a2a2a">Cat Wand</text>
+  <text x="300" y="560" text-anchor="middle" font-family="Inter, Segoe UI, sans-serif"
+        font-size="18" fill="#2a2a2a" opacity="0.55">view C</text>
+</svg>

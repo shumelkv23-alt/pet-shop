@@ -1,0 +1,198 @@
+[
+  {
+    "id": 1,
+    "title": "Premium Cat — сухой корм",
+    "subtitle": "Для взрослых кошек, с лососем",
+    "category": "food",
+    "price": 1290,
+    "rating": 4.7,
+    "description": "Полнорационный сухой корм премиум-класса для взрослых кошек. В составе 45% рыбы, без искусственных красителей и консервантов. Поддерживает здоровье шерсти и иммунитет.",
+    "images": [
+      "/images/products/1-a.svg",
+      "/images/products/1-b.svg",
+      "/images/products/1-c.svg"
+    ]
+  },
+  {
+    "id": 2,
+    "title": "Meat Feast — влажный корм",
+    "subtitle": "Для собак средних пород, говядина",
+    "category": "food",
+    "price": 189,
+    "rating": 4.5,
+    "description": "Сочные кусочки говядины в желе. Подходит для собак от 1 года. Упаковка 200 г — полноценная порция на один приём пищи.",
+    "images": [
+      "/images/products/2-a.svg",
+      "/images/products/2-b.svg",
+      "/images/products/2-c.svg"
+    ]
+  },
+  {
+    "id": 3,
+    "title": "Puppy Start — корм для щенков",
+    "subtitle": "С 2 до 12 месяцев, индейка",
+    "category": "food",
+    "price": 1690,
+    "rating": 4.8,
+    "description": "Стартовый корм для щенков всех пород. Повышенное содержание белка и Омега-3 для правильного развития скелета, мозга и зрения.",
+    "images": [
+      "/images/products/3-a.svg",
+      "/images/products/3-b.svg",
+      "/images/products/3-c.svg"
+    ]
+  },
+  {
+    "id": 4,
+    "title": "Squeaky Ball — мяч-пищалка",
+    "subtitle": "Резиновая игрушка для собак",
+    "category": "toys",
+    "price": 390,
+    "rating": 4.3,
+    "description": "Мяч из натурального каучука с пищалкой внутри. Не теряет форму при прикусывании, подходит для активных игр в апорт.",
+    "images": [
+      "/images/products/4-a.svg",
+      "/images/products/4-b.svg",
+      "/images/products/4-c.svg"
+    ]
+  },
+  {
+    "id": 5,
+    "title": "Cat Wand — дразнилка с пером",
+    "subtitle": "Интерактивная игрушка для кошек",
+    "category": "toys",
+    "price": 250,
+    "rating": 4.6,
+    "description": "Телескопическая удочка с настоящим перьевым хвостиком и колокольчиком. Длина — от 35 до 80 см.",
+    "images": [
+      "/images/products/5-a.svg",
+      "/images/products/5-b.svg",
+      "/images/products/5-c.svg"
+    ]
+  },
+  {
+    "id": 6,
+    "title": "Tug Rope — канат для собак",
+    "subtitle": "Хлопковый, для перетягивания",
+    "category": "toys",
+    "price": 490,
+    "rating": 4.4,
+    "description": "Плетёный канат из 100% хлопка. Отлично чистит зубы во время игры. Длина 30 см, подходит для собак средних и крупных пород.",
+    "images": [
+      "/images/products/6-a.svg",
+      "/images/products/6-b.svg",
+      "/images/products/6-c.svg"
+    ]
+  },
+  {
+    "id": 7,
+    "title": "Nylon Collar — нейлоновый ошейник",
+    "subtitle": "С металлической пряжкой",
+    "category": "accessories",
+    "price": 290,
+    "rating": 4.2,
+    "description": "Прочный нейлоновый ошейник с регулируемой длиной. Мягкая подкладка не натирает шерсть. Размеры S/M/L.",
+    "images": [
+      "/images/products/7-a.svg",
+      "/images/products/7-b.svg",
+      "/images/products/7-c.svg"
+    ]
+  },
+  {
+    "id": 8,
+    "title": "Retract Leash 5m — рулетка",
+    "subtitle": "Поводок-рулетка для собак до 25 кг",
+    "category": "accessories",
+    "price": 1190,
+    "rating": 4.1,
+    "description": "Автоматический поводок-рулетка с лентой 5 метров. Кнопка стопора и блокировки, эргономичная ручка с противоскользящим покрытием.",
+    "images": [
+      "/images/products/8-a.svg",
+      "/images/products/8-b.svg",
+      "/images/products/8-c.svg"
+    ]
+  },
+  {
+    "id": 9,
+    "title": "Pet Carrier M — переноска",
+    "subtitle": "Пластик, размер M, до 10 кг",
+    "category": "accessories",
+    "price": 2490,
+    "rating": 4.5,
+    "description": "Прочная пластиковая переноска с вентиляцией и удобной ручкой. Подходит для авиаперевозок (IATA). Размеры 55×35×36 см.",
+    "images": [
+      "/images/products/9-a.svg",
+      "/images/products/9-b.svg",
+      "/images/products/9-c.svg"
+    ]
+  },
+  {
+    "id": 10,
+    "title": "Double Bowl — двойная миска",
+    "subtitle": "Керамика, на силиконовом коврике",
+    "category": "accessories",
+    "price": 890,
+    "rating": 4.7,
+    "description": "Две керамические чаши для воды и корма на общем антискользящем коврике. Объём каждой миски — 300 мл. Можно мыть в посудомойке.",
+    "images": [
+      "/images/products/10-a.svg",
+      "/images/products/10-b.svg",
+      "/images/products/10-c.svg"
+    ]
+  },
+  {
+    "id": 11,
+    "title": "Deep Cat Litter — глубокий лоток",
+    "subtitle": "С высоким бортом, для кошек",
+    "category": "accessories",
+    "price": 690,
+    "rating": 4.0,
+    "description": "Лоток с высоким бортиком 22 см — наполнитель остаётся внутри. Гладкая поверхность легко моется. Размер 52×40×22 см.",
+    "images": [
+      "/images/products/11-a.svg",
+      "/images/products/11-b.svg",
+      "/images/products/11-c.svg"
+    ]
+  },
+  {
+    "id": 12,
+    "title": "Long-hair Shampoo — шампунь",
+    "subtitle": "Для длинношёрстных собак и кошек",
+    "category": "care",
+    "price": 560,
+    "rating": 4.6,
+    "description": "Профессиональный шампунь с протеинами шёлка. Распутывает колтуны, придаёт шерсти блеск. Без сульфатов и парабенов. 250 мл.",
+    "images": [
+      "/images/products/12-a.svg",
+      "/images/products/12-b.svg",
+      "/images/products/12-c.svg"
+    ]
+  },
+  {
+    "id": 13,
+    "title": "Slicker Brush — пуходёрка",
+    "subtitle": "С самоочисткой",
+    "category": "care",
+    "price": 790,
+    "rating": 4.8,
+    "description": "Щётка-пуходёрка с кнопкой самоочистки. Мягкие гнутые зубцы аккуратно удаляют подшёрсток, не царапая кожу.",
+    "images": [
+      "/images/products/13-a.svg",
+      "/images/products/13-b.svg",
+      "/images/products/13-c.svg"
+    ]
+  },
+  {
+    "id": 14,
+    "title": "Nail Clipper — когтерез",
+    "subtitle": "Секатор, для средних и крупных пород",
+    "category": "care",
+    "price": 420,
+    "rating": 4.4,
+    "description": "Когтерез-секатор с ограничителем против перерезания. Закалённая сталь, эргономичные ручки с прорезиненным покрытием.",
+    "images": [
+      "/images/products/14-a.svg",
+      "/images/products/14-b.svg",
+      "/images/products/14-c.svg"
+    ]
+  }
+]
