@@ -5,6 +5,9 @@ import { loadProducts } from '../store/products.js';
 import { formatPrice } from '../lib/format.js';
 import * as cartStore from '../store/cart.js';
 import { onCartChange } from '../lib/events.js';
+import { renderHeader } from '../components/header.js';
+
+renderHeader('catalog');
 
 const products = loadProducts();
 console.info('[catalog] loaded %d products', products.length);
