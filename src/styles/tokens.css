@@ -1,23 +1,37 @@
 :root {
   /* ==================== Colors ==================== */
-  --color-bg: oklch(98% 0.01 80);
-  --color-surface: oklch(100% 0 0);
-  --color-surface-alt: oklch(96% 0.01 80);
-  --color-text: oklch(22% 0.02 260);
-  --color-muted: oklch(55% 0.02 260);
-  --color-border: oklch(92% 0.005 260);
+  --color-bg: #F9FAFB;
+  --color-surface: #FFFFFF;
+  --color-surface-alt: #F9FAFB;
+  --color-surface-soft: #FFF5EB;
 
-  --color-accent: oklch(72% 0.15 45);
-  --color-accent-hover: oklch(66% 0.17 45);
-  --color-accent-contrast: oklch(100% 0 0);
+  --color-text: #0F172A;
+  --color-text-strong: #020617;
+  --color-muted: #6B7280;
+  --color-border: #E5E7EB;
 
-  --color-star: oklch(82% 0.17 85);
-  --color-success: oklch(70% 0.17 150);
-  --color-danger: oklch(58% 0.22 25);
+  --color-accent: #F97316;
+  --color-accent-hover: #EA580C;
+  --color-accent-soft: #FFF5EB;
+  --color-accent-pink: #FF1E87;
+  --color-accent-contrast: #FFFFFF;
+
+  --color-star: #FBBF24;
+  --color-success: #22C55E;
+  --color-danger: #EF4444;
+
+  --color-footer-bg: #0B1220;
+  --color-footer-text: #94A3B8;
+  --color-footer-heading: #FFFFFF;
+  --color-footer-border: rgba(255, 255, 255, 0.08);
+
+  /* ==================== Gradients ==================== */
+  --gradient-brand: linear-gradient(90deg, #F97316 0%, #FF1E87 100%);
+  --gradient-brand-diagonal: linear-gradient(135deg, #F97316 0%, #FF1E87 100%);
+  --gradient-soft: linear-gradient(135deg, #FFF5EB 0%, #FFE9F1 100%);
 
   /* ==================== Typography ==================== */
   --font-sans: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
-  --font-display: 'Inter', system-ui, sans-serif;
 
   --text-xs: 0.75rem;
   --text-sm: 0.875rem;
@@ -26,7 +40,8 @@
   --text-xl: 1.25rem;
   --text-2xl: 1.5rem;
   --text-3xl: 2rem;
-  --text-hero: clamp(2rem, 1rem + 4vw, 3.25rem);
+  --text-4xl: 2.5rem;
+  --text-hero: clamp(2.25rem, 1.5rem + 3vw, 3.5rem);
 
   --leading-tight: 1.2;
   --leading-normal: 1.5;
@@ -48,15 +63,17 @@
 
   /* ==================== Radius ==================== */
   --radius-sm: 8px;
-  --radius-md: 14px;
-  --radius-lg: 24px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --radius-xl: 28px;
   --radius-full: 9999px;
 
   /* ==================== Shadows ==================== */
-  --shadow-sm: 0 1px 2px oklch(0% 0 0 / 0.06);
-  --shadow-md: 0 6px 16px oklch(0% 0 0 / 0.08);
-  --shadow-hover: 0 12px 28px oklch(0% 0 0 / 0.12);
-  --shadow-focus: 0 0 0 3px oklch(72% 0.15 45 / 0.3);
+  --shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.04);
+  --shadow-md: 0 4px 12px rgba(15, 23, 42, 0.06);
+  --shadow-lg: 0 10px 30px rgba(15, 23, 42, 0.08);
+  --shadow-hover: 0 14px 36px rgba(15, 23, 42, 0.12);
+  --shadow-focus: 0 0 0 3px rgba(249, 115, 22, 0.35);
 
   /* ==================== Motion ==================== */
   --duration-fast: 150ms;

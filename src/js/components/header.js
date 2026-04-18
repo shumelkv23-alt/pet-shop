@@ -2,12 +2,11 @@ import '../../styles/header.css';
 import { getTotalCount } from '../store/cart.js';
 import { onCartChange } from '../lib/events.js';
 
-const NAV_LINKS = [
-  { key: 'catalog', href: '/index.html', label: 'Каталог' },
-  { key: 'cart', href: '/cart.html', label: 'Корзина', isCart: true },
-];
+const PAW_ICON = `<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="5.5" cy="9" r="2"/><circle cx="9.5" cy="5.5" r="2"/><circle cx="14.5" cy="5.5" r="2"/><circle cx="18.5" cy="9" r="2"/><path d="M12 11c-3 0-6 2.2-6 5.5 0 2 1.3 3.5 3 3.5 1.2 0 2-0.5 3-0.5s1.8 0.5 3 0.5c1.7 0 3-1.5 3-3.5 0-3.3-3-5.5-6-5.5z"/></svg>`;
 
-const CART_ICON = `<svg class="cart-link__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 4h2l2.4 11.3a2 2 0 0 0 2 1.7h8.2a2 2 0 0 0 2-1.6L21 8H6"/><circle cx="9" cy="20" r="1.5"/><circle cx="18" cy="20" r="1.5"/></svg>`;
+const SEARCH_ICON = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>`;
+
+const CART_ICON = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>`;
 
 export function renderHeader(activeKey) {
   const mount = document.getElementById('app-header');
@@ -16,13 +15,27 @@ export function renderHeader(activeKey) {
   mount.className = 'site-header';
   mount.innerHTML = `
     <div class="site-header__inner container">
-      <a class="site-header__logo" href="/index.html" aria-label="Pet Shop — главная">
-        <span class="site-header__logo-mark" aria-hidden="true">🐾</span>
-        <span>Pet Shop</span>
+      <a class="site-header__logo" href="/index.html" aria-label="PawsStore — главная">
+        <span class="site-header__logo-mark">${PAW_ICON}</span>
+        <span class="site-header__logo-text">PawsStore</span>
       </a>
       <nav class="site-header__nav" aria-label="Основная навигация">
-        ${NAV_LINKS.map((link) => renderLink(link, activeKey)).join('')}
+        <a class="site-header__link" href="/index.html" ${activeKey === 'catalog' ? 'aria-current="page"' : ''}>Каталог</a>
       </nav>
+      <div class="site-header__actions">
+        <button type="button" class="site-header__icon-btn" aria-label="Поиск (скоро)" disabled>
+          ${SEARCH_ICON}
+        </button>
+        <a
+          class="site-header__icon-btn cart-link"
+          href="/cart.html"
+          aria-label="Корзина"
+          ${activeKey === 'cart' ? 'aria-current="page"' : ''}
+        >
+          ${CART_ICON}
+          <span class="cart-badge" data-cart-badge data-empty="true" aria-live="polite">0</span>
+        </a>
+      </div>
     </div>
   `;
 
@@ -31,19 +44,6 @@ export function renderHeader(activeKey) {
     updateBadge(badge, getTotalCount(), { animate: false });
     onCartChange(() => updateBadge(badge, getTotalCount(), { animate: true }));
   }
-}
-
-function renderLink(link, activeKey) {
-  const current = link.key === activeKey ? 'aria-current="page"' : '';
-  if (link.isCart) {
-    return `
-      <a class="site-header__link cart-link" href="${link.href}" ${current} aria-label="${link.label}">
-        ${CART_ICON}
-        <span class="cart-badge" data-cart-badge data-empty="true" aria-live="polite">0</span>
-      </a>
-    `;
-  }
-  return `<a class="site-header__link" href="${link.href}" ${current}>${link.label}</a>`;
 }
 
 function updateBadge(badge, count, { animate }) {
