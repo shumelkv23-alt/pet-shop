@@ -18,6 +18,8 @@
   border-color: transparent;
 }
 
+/* ==================== Media / image ==================== */
+
 .product-card__media {
   position: relative;
   display: block;
@@ -37,6 +39,8 @@
   transform: scale(1.05);
 }
 
+/* ==================== Price pill ==================== */
+
 .product-card__price-pill {
   position: absolute;
   top: var(--space-3);
@@ -50,6 +54,71 @@
   box-shadow: var(--shadow-sm);
   letter-spacing: var(--tracking-tight);
 }
+
+/* ==================== Add-to-cart icon button ==================== */
+
+.product-card__add-btn {
+  position: absolute;
+  bottom: var(--space-3);
+  right: var(--space-3);
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-accent);
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(249, 115, 22, 0.45);
+  opacity: 0;
+  transform: scale(0.75);
+  transition:
+    opacity var(--duration-normal) var(--ease-out),
+    transform var(--duration-normal) var(--ease-out),
+    background var(--duration-fast) var(--ease-out),
+    box-shadow var(--duration-fast) var(--ease-out);
+}
+
+.product-card__add-btn svg {
+  width: 20px;
+  height: 20px;
+  pointer-events: none;
+}
+
+.product-card:hover .product-card__add-btn {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.product-card__add-btn:hover {
+  background: var(--color-accent-hover);
+  box-shadow: 0 6px 20px rgba(249, 115, 22, 0.55);
+}
+
+.product-card__add-btn:active {
+  transform: scale(0.92);
+}
+
+.product-card__add-btn:focus-visible {
+  outline: none;
+  box-shadow: var(--shadow-focus);
+  opacity: 1;
+  transform: scale(1);
+}
+
+.product-card__add-btn[data-state="added"] {
+  background: var(--color-success);
+  box-shadow: 0 4px 14px rgba(34, 197, 94, 0.45);
+}
+
+.product-card__add-btn[data-state="added"]:hover {
+  background: #16a34a;
+  box-shadow: 0 6px 20px rgba(34, 197, 94, 0.55);
+}
+
+/* ==================== Card body ==================== */
 
 .product-card__body {
   display: flex;
@@ -71,17 +140,10 @@
   color: var(--color-accent);
 }
 
-.product-card__subtitle {
-  font-size: var(--text-sm);
-  color: var(--color-muted);
-  line-height: var(--leading-normal);
-}
-
 .product-card__rating {
   display: inline-flex;
   align-items: center;
   gap: var(--space-2);
-  margin-top: var(--space-2);
   font-size: var(--text-sm);
   color: var(--color-muted);
 }
@@ -99,42 +161,10 @@
   color: var(--color-muted);
 }
 
-.product-card__add-btn {
-  margin-top: var(--space-3);
-  width: 100%;
-  padding: var(--space-3) var(--space-4);
-  background: var(--color-accent);
-  color: var(--color-accent-contrast);
-  font-size: var(--text-sm);
-  font-weight: 700;
-  border: none;
-  border-radius: var(--radius-sm);
-  cursor: pointer;
-  transition:
-    background var(--duration-fast) var(--ease-out),
-    transform var(--duration-fast) var(--ease-out),
-    box-shadow var(--duration-fast) var(--ease-out);
-}
-
-.product-card__add-btn:hover {
-  background: var(--color-accent-hover);
-  box-shadow: 0 4px 12px rgba(249, 115, 22, 0.4);
-}
-
-.product-card__add-btn:active {
-  transform: scale(0.97);
-}
-
-.product-card__add-btn:focus-visible {
-  outline: none;
-  box-shadow: var(--shadow-focus);
-}
-
-.product-card__add-btn[data-state="added"] {
-  background: var(--color-success);
-}
-
-.product-card__add-btn[data-state="added"]:hover {
-  background: #16a34a;
-  box-shadow: 0 4px 12px rgba(34, 197, 94, 0.4);
+.product-card__price {
+  font-size: var(--text-lg);
+  font-weight: 800;
+  color: var(--color-accent);
+  letter-spacing: var(--tracking-tight);
+  margin-top: var(--space-1);
 }

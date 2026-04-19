@@ -16,20 +16,44 @@
           </p>
         </div>
       </section>
-      <section class="container catalog">
-        <div class="catalog__toolbar">
-          <span class="catalog__count" id="catalog-count">Загрузка…</span>
-          <div class="catalog__controls">
-            <div class="catalog__categories" id="catalog-categories" role="group" aria-label="Фильтр по категории"></div>
-            <select class="catalog__sort" id="catalog-sort" aria-label="Сортировка">
-              <option value="default">По умолчанию</option>
-              <option value="price-asc">Цена: дешевле</option>
-              <option value="price-desc">Цена: дороже</option>
-              <option value="rating-desc">Рейтинг: выше</option>
-            </select>
+      <section class="catalog">
+        <div class="container catalog-body">
+          <aside class="catalog-sidebar">
+            <h2 class="catalog-sidebar__title">Filters</h2>
+            <div class="filter-group">
+              <h3 class="filter-group__label">Rating</h3>
+              <label class="filter-check"><input type="radio" name="rating" value="5" class="filter-check__input" /> <span>5+ Stars</span></label>
+              <label class="filter-check"><input type="radio" name="rating" value="4" class="filter-check__input" /> <span>4+ Stars</span></label>
+              <label class="filter-check"><input type="radio" name="rating" value="3" class="filter-check__input" /> <span>3+ Stars</span></label>
+            </div>
+            <div class="filter-group">
+              <h3 class="filter-group__label">Price Range</h3>
+              <div class="filter-price">
+                <div class="filter-price__field">
+                  <span class="filter-price__sym">$</span>
+                  <input type="number" class="filter-price__input" id="price-min" min="0" value="0" aria-label="Минимальная цена" />
+                </div>
+                <span class="filter-price__sep">—</span>
+                <div class="filter-price__field">
+                  <span class="filter-price__sym">$</span>
+                  <input type="number" class="filter-price__input" id="price-max" min="0" value="99999" aria-label="Максимальная цена" />
+                </div>
+              </div>
+            </div>
+          </aside>
+          <div class="catalog-main">
+            <div class="catalog__toolbar">
+              <span class="catalog__count" id="catalog-count">Загрузка…</span>
+              <select class="catalog__sort" id="catalog-sort" aria-label="Сортировка">
+                <option value="default">По умолчанию</option>
+                <option value="price-asc">Цена: дешевле</option>
+                <option value="price-desc">Цена: дороже</option>
+                <option value="rating-desc">Рейтинг: выше</option>
+              </select>
+            </div>
+            <div class="catalog__grid" id="catalog-grid"></div>
           </div>
         </div>
-        <div class="catalog__grid" id="catalog-grid"></div>
       </section>
     </main>
     <footer id="app-footer"></footer>

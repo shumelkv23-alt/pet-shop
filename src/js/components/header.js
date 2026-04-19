@@ -20,7 +20,10 @@ export function renderHeader(activeKey) {
         <span class="site-header__logo-text">PawsStore</span>
       </a>
       <nav class="site-header__nav" aria-label="Основная навигация">
-        <a class="site-header__link" href="/index.html" ${activeKey === 'catalog' ? 'aria-current="page"' : ''}>Каталог</a>
+        <a class="site-header__link" href="/index.html" ${activeKey === 'catalog' ? 'aria-current="page"' : ''}>Shop</a>
+        <a class="site-header__link" href="/index.html" ${activeKey === 'catalog' ? 'aria-current="page"' : ''}>Categories</a>
+        <a class="site-header__link" href="/index.html">Deals</a>
+        <a class="site-header__link" href="/index.html">About</a>
       </nav>
       <div class="site-header__actions">
         <button type="button" class="site-header__icon-btn" aria-label="Поиск (скоро)" disabled>
