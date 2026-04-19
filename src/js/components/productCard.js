@@ -1,11 +1,34 @@
 import { formatPrice } from '../lib/format.js';
+import { addItem, getItemQty } from '../store/cart.js';
+import { onCartChange } from '../lib/events.js';
 
 export function createCard(product) {
   const card = document.createElement('article');
   card.className = 'product-card';
   card.dataset.productId = String(product.id);
   card.innerHTML = buildMarkup(product);
+
+  const btn = card.querySelector('.product-card__add-btn');
+  if (btn) {
+    syncBtn(btn, product.id);
+    btn.addEventListener('click', () => addItem(product.id));
+    onCartChange(() => syncBtn(btn, product.id));
+  }
+
   return card;
+}
+
+function syncBtn(btn, id) {
+  const qty = getItemQty(id);
+  if (qty === 0) {
+    btn.textContent = 'В корзину';
+    btn.dataset.state = 'idle';
+    btn.setAttribute('aria-label', 'Добавить в корзину');
+  } else {
+    btn.textContent = `В корзине: ${qty}`;
+    btn.dataset.state = 'added';
+    btn.setAttribute('aria-label', `В корзине: ${qty} шт.`);
+  }
 }
 
 function buildMarkup(product) {
@@ -22,6 +45,7 @@ function buildMarkup(product) {
         <span class="product-card__stars" aria-hidden="true">${renderStars(product.rating)}</span>
         <span class="product-card__rating-count">${product.rating.toFixed(1)}</span>
       </div>
+      <button type="button" class="product-card__add-btn" aria-label="Добавить в корзину"></button>
     </div>
   `;
 }

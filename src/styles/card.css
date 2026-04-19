@@ -98,3 +98,43 @@
 .product-card__rating-count {
   color: var(--color-muted);
 }
+
+.product-card__add-btn {
+  margin-top: var(--space-3);
+  width: 100%;
+  padding: var(--space-3) var(--space-4);
+  background: var(--color-accent);
+  color: var(--color-accent-contrast);
+  font-size: var(--text-sm);
+  font-weight: 700;
+  border: none;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition:
+    background var(--duration-fast) var(--ease-out),
+    transform var(--duration-fast) var(--ease-out),
+    box-shadow var(--duration-fast) var(--ease-out);
+}
+
+.product-card__add-btn:hover {
+  background: var(--color-accent-hover);
+  box-shadow: 0 4px 12px rgba(249, 115, 22, 0.4);
+}
+
+.product-card__add-btn:active {
+  transform: scale(0.97);
+}
+
+.product-card__add-btn:focus-visible {
+  outline: none;
+  box-shadow: var(--shadow-focus);
+}
+
+.product-card__add-btn[data-state="added"] {
+  background: var(--color-success);
+}
+
+.product-card__add-btn[data-state="added"]:hover {
+  background: #16a34a;
+  box-shadow: 0 4px 12px rgba(34, 197, 94, 0.4);
+}

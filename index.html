@@ -19,7 +19,15 @@
       <section class="container catalog">
         <div class="catalog__toolbar">
           <span class="catalog__count" id="catalog-count">Загрузка…</span>
-          <span class="catalog__sort-placeholder">Сортировка — на шаге 7</span>
+          <div class="catalog__controls">
+            <div class="catalog__categories" id="catalog-categories" role="group" aria-label="Фильтр по категории"></div>
+            <select class="catalog__sort" id="catalog-sort" aria-label="Сортировка">
+              <option value="default">По умолчанию</option>
+              <option value="price-asc">Цена: дешевле</option>
+              <option value="price-desc">Цена: дороже</option>
+              <option value="rating-desc">Рейтинг: выше</option>
+            </select>
+          </div>
         </div>
         <div class="catalog__grid" id="catalog-grid"></div>
       </section>
