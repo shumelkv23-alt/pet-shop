@@ -1,198 +1,240 @@
 [
   {
     "id": 1,
-    "title": "Premium Cat — сухой корм",
-    "subtitle": "Для взрослых кошек, с лососем",
+    "title": "Premium Cat — Dry Food",
+    "subtitle": "For adult cats, with salmon",
     "category": "food",
-    "price": 1290,
+    "price": 14,
     "rating": 4.7,
-    "description": "Полнорационный сухой корм премиум-класса для взрослых кошек. В составе 45% рыбы, без искусственных красителей и консервантов. Поддерживает здоровье шерсти и иммунитет.",
-    "images": [
-      "/images/products/1-a.svg",
-      "/images/products/1-b.svg",
-      "/images/products/1-c.svg"
-    ]
+    "highlights": ["45% real salmon content", "No artificial colors or preservatives", "Supports coat health and immunity"],
+    "specs": [
+      { "label": "Life Stage", "value": "Adult" },
+      { "label": "Main Protein", "value": "Salmon 45%" },
+      { "label": "Pack Size", "value": "1.5 kg" },
+      { "label": "Breed Size", "value": "All breeds" }
+    ],
+    "description": "Complete premium dry food for adult cats. Contains 45% fish, no artificial colors or preservatives. Supports coat health and immunity.",
+    "images": ["/images/products/1-a.png", "/images/products/1-b.svg", "/images/products/1-c.svg"]
   },
   {
     "id": 2,
-    "title": "Meat Feast — влажный корм",
-    "subtitle": "Для собак средних пород, говядина",
+    "title": "Meat Feast — Wet Food",
+    "subtitle": "For medium dog breeds, beef",
     "category": "food",
-    "price": 189,
+    "price": 3,
     "rating": 4.5,
-    "description": "Сочные кусочки говядины в желе. Подходит для собак от 1 года. Упаковка 200 г — полноценная порция на один приём пищи.",
-    "images": [
-      "/images/products/2-a.svg",
-      "/images/products/2-b.svg",
-      "/images/products/2-c.svg"
-    ]
+    "highlights": ["Juicy beef chunks in jelly", "Suitable for dogs 1+ year", "200g full-serving pack"],
+    "specs": [
+      { "label": "Life Stage", "value": "Adult 1+ year" },
+      { "label": "Main Protein", "value": "Beef" },
+      { "label": "Pack Size", "value": "200 g" },
+      { "label": "Breed Size", "value": "Medium" }
+    ],
+    "description": "Juicy beef chunks in jelly. Suitable for dogs from 1 year old. 200g pack — a complete single-serving meal.",
+    "images": ["/images/products/2-a.png", "/images/products/2-b.svg", "/images/products/2-c.svg"]
   },
   {
     "id": 3,
-    "title": "Puppy Start — корм для щенков",
-    "subtitle": "С 2 до 12 месяцев, индейка",
+    "title": "Puppy Start — Puppy Food",
+    "subtitle": "Ages 2–12 months, turkey",
     "category": "food",
-    "price": 1690,
+    "price": 18,
     "rating": 4.8,
-    "description": "Стартовый корм для щенков всех пород. Повышенное содержание белка и Омега-3 для правильного развития скелета, мозга и зрения.",
-    "images": [
-      "/images/products/3-a.svg",
-      "/images/products/3-b.svg",
-      "/images/products/3-c.svg"
-    ]
+    "highlights": ["High protein for healthy growth", "Omega-3 for brain & vision development", "Suitable for all breeds 2–12 months"],
+    "specs": [
+      { "label": "Life Stage", "value": "Puppy 2–12 months" },
+      { "label": "Main Protein", "value": "Turkey" },
+      { "label": "Pack Size", "value": "2 kg" },
+      { "label": "Breed Size", "value": "All breeds" }
+    ],
+    "description": "Starter food for puppies of all breeds. High protein content and Omega-3 for proper development of bones, brain, and vision.",
+    "images": ["/images/products/3-a.png", "/images/products/3-b.svg", "/images/products/3-c.svg"]
   },
   {
     "id": 4,
-    "title": "Squeaky Ball — мяч-пищалка",
-    "subtitle": "Резиновая игрушка для собак",
+    "title": "Squeaky Ball",
+    "subtitle": "Rubber toy for dogs",
     "category": "toys",
-    "price": 390,
+    "price": 5,
     "rating": 4.3,
-    "description": "Мяч из натурального каучука с пищалкой внутри. Не теряет форму при прикусывании, подходит для активных игр в апорт.",
-    "images": [
-      "/images/products/4-a.svg",
-      "/images/products/4-b.svg",
-      "/images/products/4-c.svg"
-    ]
+    "highlights": ["Natural rubber, bite-resistant", "Built-in squeaker inside", "Great for active fetch play"],
+    "specs": [
+      { "label": "Material", "value": "Natural rubber" },
+      { "label": "Diameter", "value": "7 cm" },
+      { "label": "Feature", "value": "Built-in squeaker" },
+      { "label": "Suitable For", "value": "All dog sizes" }
+    ],
+    "description": "Natural rubber ball with a squeaker inside. Keeps its shape under biting, great for active fetch play.",
+    "images": ["/images/products/4-a.png", "/images/products/4-b.svg", "/images/products/4-c.svg"]
   },
   {
     "id": 5,
-    "title": "Cat Wand — дразнилка с пером",
-    "subtitle": "Интерактивная игрушка для кошек",
+    "title": "Cat Wand — Feather Teaser",
+    "subtitle": "Interactive toy for cats",
     "category": "toys",
-    "price": 250,
+    "price": 4,
     "rating": 4.6,
-    "description": "Телескопическая удочка с настоящим перьевым хвостиком и колокольчиком. Длина — от 35 до 80 см.",
-    "images": [
-      "/images/products/5-a.svg",
-      "/images/products/5-b.svg",
-      "/images/products/5-c.svg"
-    ]
+    "highlights": ["Real feather tail with bell", "Telescopic length 35–80 cm", "Stimulates natural hunting instinct"],
+    "specs": [
+      { "label": "Length", "value": "35–80 cm" },
+      { "label": "Material", "value": "Plastic & feather" },
+      { "label": "Feature", "value": "Bell attachment" },
+      { "label": "Suitable For", "value": "Cats of all ages" }
+    ],
+    "description": "Telescopic wand with a real feather tail and a little bell. Extends from 35 to 80 cm.",
+    "images": ["/images/products/5-a.png", "/images/products/5-b.svg", "/images/products/5-c.svg"]
   },
   {
     "id": 6,
-    "title": "Tug Rope — канат для собак",
-    "subtitle": "Хлопковый, для перетягивания",
+    "title": "Tug Rope",
+    "subtitle": "Cotton rope for tug-of-war",
     "category": "toys",
-    "price": 490,
+    "price": 6,
     "rating": 4.4,
-    "description": "Плетёный канат из 100% хлопка. Отлично чистит зубы во время игры. Длина 30 см, подходит для собак средних и крупных пород.",
-    "images": [
-      "/images/products/6-a.svg",
-      "/images/products/6-b.svg",
-      "/images/products/6-c.svg"
-    ]
+    "highlights": ["100% cotton, gentle on gums", "Helps clean teeth during play", "30 cm, fits medium & large dogs"],
+    "specs": [
+      { "label": "Material", "value": "100% cotton" },
+      { "label": "Length", "value": "30 cm" },
+      { "label": "Feature", "value": "Dental cleaning" },
+      { "label": "Suitable For", "value": "Medium & large dogs" }
+    ],
+    "description": "Braided 100% cotton rope. Great for cleaning teeth during play. Length 30 cm, suitable for medium and large breed dogs.",
+    "images": ["/images/products/6-a.png", "/images/products/6-b.svg", "/images/products/6-c.svg"]
   },
   {
     "id": 7,
-    "title": "Nylon Collar — нейлоновый ошейник",
-    "subtitle": "С металлической пряжкой",
+    "title": "Nylon Collar",
+    "subtitle": "With metal buckle",
     "category": "accessories",
-    "price": 290,
+    "price": 4,
     "rating": 4.2,
-    "description": "Прочный нейлоновый ошейник с регулируемой длиной. Мягкая подкладка не натирает шерсть. Размеры S/M/L.",
-    "images": [
-      "/images/products/7-a.svg",
-      "/images/products/7-b.svg",
-      "/images/products/7-c.svg"
-    ]
+    "highlights": ["Adjustable length, sizes S/M/L", "Soft lining, no chafing", "Durable metal buckle"],
+    "specs": [
+      { "label": "Material", "value": "Nylon" },
+      { "label": "Sizes", "value": "S / M / L" },
+      { "label": "Buckle", "value": "Metal" },
+      { "label": "Suitable For", "value": "All dog breeds" }
+    ],
+    "description": "Durable nylon collar with adjustable length. Soft lining won't rub the coat. Available in sizes S/M/L.",
+    "images": ["/images/products/7-a.png", "/images/products/7-b.svg", "/images/products/7-c.svg"]
   },
   {
     "id": 8,
-    "title": "Retract Leash 5m — рулетка",
-    "subtitle": "Поводок-рулетка для собак до 25 кг",
+    "title": "Retractable Leash 5m",
+    "subtitle": "For dogs up to 25 kg",
     "category": "accessories",
-    "price": 1190,
+    "price": 13,
     "rating": 4.1,
-    "description": "Автоматический поводок-рулетка с лентой 5 метров. Кнопка стопора и блокировки, эргономичная ручка с противоскользящим покрытием.",
-    "images": [
-      "/images/products/8-a.svg",
-      "/images/products/8-b.svg",
-      "/images/products/8-c.svg"
-    ]
+    "highlights": ["5-meter retractable tape", "Stop & lock button", "Ergonomic non-slip handle"],
+    "specs": [
+      { "label": "Tape Length", "value": "5 meters" },
+      { "label": "Max Weight", "value": "25 kg" },
+      { "label": "Feature", "value": "Stop & lock button" },
+      { "label": "Handle", "value": "Non-slip ergonomic" }
+    ],
+    "description": "Auto-retractable leash with a 5-meter tape. Stop and lock button, ergonomic non-slip handle.",
+    "images": ["/images/products/8-a.png", "/images/products/8-b.svg", "/images/products/8-c.svg"]
   },
   {
     "id": 9,
-    "title": "Pet Carrier M — переноска",
-    "subtitle": "Пластик, размер M, до 10 кг",
+    "title": "Pet Carrier M",
+    "subtitle": "Plastic, size M, up to 10 kg",
     "category": "accessories",
-    "price": 2490,
+    "price": 27,
     "rating": 4.5,
-    "description": "Прочная пластиковая переноска с вентиляцией и удобной ручкой. Подходит для авиаперевозок (IATA). Размеры 55×35×36 см.",
-    "images": [
-      "/images/products/9-a.svg",
-      "/images/products/9-b.svg",
-      "/images/products/9-c.svg"
-    ]
+    "highlights": ["IATA-approved for air travel", "Sturdy ventilated plastic shell", "Dimensions 55×35×36 cm"],
+    "specs": [
+      { "label": "Dimensions", "value": "55×35×36 cm" },
+      { "label": "Max Weight", "value": "10 kg" },
+      { "label": "Standard", "value": "IATA-approved" },
+      { "label": "Material", "value": "Hard plastic" }
+    ],
+    "description": "Sturdy plastic carrier with ventilation and a comfortable handle. IATA-approved for air travel. Dimensions 55×35×36 cm.",
+    "images": ["/images/products/9-a.png", "/images/products/9-b.svg", "/images/products/9-c.svg"]
   },
   {
     "id": 10,
-    "title": "Double Bowl — двойная миска",
-    "subtitle": "Керамика, на силиконовом коврике",
+    "title": "Double Bowl",
+    "subtitle": "Ceramic, on silicone mat",
     "category": "accessories",
-    "price": 890,
+    "price": 10,
     "rating": 4.7,
-    "description": "Две керамические чаши для воды и корма на общем антискользящем коврике. Объём каждой миски — 300 мл. Можно мыть в посудомойке.",
-    "images": [
-      "/images/products/10-a.svg",
-      "/images/products/10-b.svg",
-      "/images/products/10-c.svg"
-    ]
+    "highlights": ["Ceramic bowls, dishwasher safe", "300 ml capacity per bowl", "Anti-slip silicone mat included"],
+    "specs": [
+      { "label": "Material", "value": "Ceramic" },
+      { "label": "Capacity", "value": "300 ml × 2" },
+      { "label": "Mat", "value": "Silicone, non-slip" },
+      { "label": "Care", "value": "Dishwasher safe" }
+    ],
+    "description": "Two ceramic bowls for water and food on a shared non-slip mat. Each bowl holds 300 ml. Dishwasher safe.",
+    "images": ["/images/products/10-a.png", "/images/products/10-b.svg", "/images/products/10-c.svg"]
   },
   {
     "id": 11,
-    "title": "Deep Cat Litter — глубокий лоток",
-    "subtitle": "С высоким бортом, для кошек",
+    "title": "Deep Cat Litter Box",
+    "subtitle": "High-sided, for cats",
     "category": "accessories",
-    "price": 690,
+    "price": 8,
     "rating": 4.0,
-    "description": "Лоток с высоким бортиком 22 см — наполнитель остаётся внутри. Гладкая поверхность легко моется. Размер 52×40×22 см.",
-    "images": [
-      "/images/products/11-a.svg",
-      "/images/products/11-b.svg",
-      "/images/products/11-c.svg"
-    ]
+    "highlights": ["22 cm high sides keep litter in", "Smooth surface, easy to clean", "Size 52×40×22 cm"],
+    "specs": [
+      { "label": "Dimensions", "value": "52×40×22 cm" },
+      { "label": "Side Height", "value": "22 cm" },
+      { "label": "Material", "value": "Smooth plastic" },
+      { "label": "Suitable For", "value": "All cat breeds" }
+    ],
+    "description": "Litter box with a 22 cm high rim — litter stays inside. Smooth surface is easy to clean. Size 52×40×22 cm.",
+    "images": ["/images/products/11-a.png", "/images/products/11-b.svg", "/images/products/11-c.svg"]
   },
   {
     "id": 12,
-    "title": "Long-hair Shampoo — шампунь",
-    "subtitle": "Для длинношёрстных собак и кошек",
+    "title": "Long-Hair Shampoo",
+    "subtitle": "For long-haired dogs and cats",
     "category": "care",
-    "price": 560,
+    "price": 7,
     "rating": 4.6,
-    "description": "Профессиональный шампунь с протеинами шёлка. Распутывает колтуны, придаёт шерсти блеск. Без сульфатов и парабенов. 250 мл.",
-    "images": [
-      "/images/products/12-a.svg",
-      "/images/products/12-b.svg",
-      "/images/products/12-c.svg"
-    ]
+    "highlights": ["Silk protein formula for shine", "Detangles mats effortlessly", "Sulfate & paraben free, 250 ml"],
+    "specs": [
+      { "label": "Volume", "value": "250 ml" },
+      { "label": "Formula", "value": "Silk proteins" },
+      { "label": "Free From", "value": "Sulfates & parabens" },
+      { "label": "Suitable For", "value": "Dogs & cats" }
+    ],
+    "description": "Professional shampoo with silk proteins. Detangles mats and adds shine. Sulfate- and paraben-free. 250 ml.",
+    "images": ["/images/products/12-a.png", "/images/products/12-b.svg", "/images/products/12-c.svg"]
   },
   {
     "id": 13,
-    "title": "Slicker Brush — пуходёрка",
-    "subtitle": "С самоочисткой",
+    "title": "Slicker Brush",
+    "subtitle": "Self-cleaning",
     "category": "care",
-    "price": 790,
+    "price": 9,
     "rating": 4.8,
-    "description": "Щётка-пуходёрка с кнопкой самоочистки. Мягкие гнутые зубцы аккуратно удаляют подшёрсток, не царапая кожу.",
-    "images": [
-      "/images/products/13-a.svg",
-      "/images/products/13-b.svg",
-      "/images/products/13-c.svg"
-    ]
+    "highlights": ["One-click self-cleaning button", "Soft bent pins, skin-safe", "Removes undercoat effectively"],
+    "specs": [
+      { "label": "Pin Type", "value": "Soft bent steel" },
+      { "label": "Feature", "value": "Self-cleaning button" },
+      { "label": "Suitable For", "value": "All coat types" },
+      { "label": "Handle", "value": "Ergonomic grip" }
+    ],
+    "description": "Self-cleaning slicker brush with a push button. Soft bent pins gently remove undercoat without scratching the skin.",
+    "images": ["/images/products/13-a.png", "/images/products/13-b.svg", "/images/products/13-c.svg"]
   },
   {
     "id": 14,
-    "title": "Nail Clipper — когтерез",
-    "subtitle": "Секатор, для средних и крупных пород",
+    "title": "Nail Clipper",
+    "subtitle": "Scissors type, for medium and large breeds",
     "category": "care",
-    "price": 420,
+    "price": 6,
     "rating": 4.4,
-    "description": "Когтерез-секатор с ограничителем против перерезания. Закалённая сталь, эргономичные ручки с прорезиненным покрытием.",
-    "images": [
-      "/images/products/14-a.svg",
-      "/images/products/14-b.svg",
-      "/images/products/14-c.svg"
-    ]
+    "highlights": ["Safety stop prevents over-cutting", "Hardened steel blades", "Ergonomic rubber-grip handles"],
+    "specs": [
+      { "label": "Type", "value": "Scissors / guillotine" },
+      { "label": "Blade", "value": "Hardened steel" },
+      { "label": "Safety", "value": "Built-in stop guard" },
+      { "label": "Suitable For", "value": "Medium & large breeds" }
+    ],
+    "description": "Scissor-style nail clipper with a safety stop. Hardened steel, ergonomic rubber-grip handles.",
+    "images": ["/images/products/14-a.png", "/images/products/14-b.svg", "/images/products/14-c.svg"]
   }
 ]

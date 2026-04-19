@@ -30,11 +30,11 @@ function syncBtn(btn, id) {
   if (qty === 0) {
     btn.innerHTML = CART_ICON;
     btn.dataset.state = 'idle';
-    btn.setAttribute('aria-label', 'Добавить в корзину');
+    btn.setAttribute('aria-label', 'Add to cart');
   } else {
     btn.innerHTML = CHECK_ICON;
     btn.dataset.state = 'added';
-    btn.setAttribute('aria-label', `В корзине: ${qty} шт.`);
+    btn.setAttribute('aria-label', `In cart: ${qty}`);
     btn.dataset.qty = qty;
   }
 }
@@ -45,11 +45,11 @@ function buildMarkup(product) {
     <a class="product-card__media" href="${href}" tabindex="-1" aria-hidden="true">
       <img src="${product.images[0]}" alt="" loading="lazy" width="600" height="600" />
       <span class="product-card__price-pill">${formatPrice(product.price)}</span>
-      <button type="button" class="product-card__add-btn" aria-label="Добавить в корзину"></button>
+      <button type="button" class="product-card__add-btn" aria-label="Add to cart"></button>
     </a>
     <div class="product-card__body">
       <a class="product-card__title" href="${href}">${escapeHtml(product.title)}</a>
-      <div class="product-card__rating" aria-label="Рейтинг ${product.rating} из 5">
+      <div class="product-card__rating" aria-label="Rating ${product.rating} out of 5">
         <span class="product-card__stars" aria-hidden="true">${renderStars(product.rating)}</span>
         <span class="product-card__rating-count">(${Math.round(product.rating * 10)})</span>
       </div>

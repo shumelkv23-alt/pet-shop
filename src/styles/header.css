@@ -70,6 +70,11 @@
   color: var(--color-text);
 }
 
+.site-header__link--disabled {
+  cursor: default;
+  pointer-events: none;
+}
+
 .site-header__actions {
   display: flex;
   align-items: center;

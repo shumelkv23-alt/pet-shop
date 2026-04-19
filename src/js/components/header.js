@@ -15,24 +15,24 @@ export function renderHeader(activeKey) {
   mount.className = 'site-header';
   mount.innerHTML = `
     <div class="site-header__inner container">
-      <a class="site-header__logo" href="/index.html" aria-label="PawsStore — главная">
+      <a class="site-header__logo" href="/index.html" aria-label="PawsStore — home">
         <span class="site-header__logo-mark">${PAW_ICON}</span>
         <span class="site-header__logo-text">PawsStore</span>
       </a>
-      <nav class="site-header__nav" aria-label="Основная навигация">
-        <a class="site-header__link" href="/index.html" ${activeKey === 'catalog' ? 'aria-current="page"' : ''}>Shop</a>
-        <a class="site-header__link" href="/index.html" ${activeKey === 'catalog' ? 'aria-current="page"' : ''}>Categories</a>
-        <a class="site-header__link" href="/index.html">Deals</a>
-        <a class="site-header__link" href="/index.html">About</a>
+      <nav class="site-header__nav" aria-label="Main navigation">
+        <a class="site-header__link" href="${activeKey === 'catalog' ? '#shop' : '/index.html#shop'}">Shop</a>
+        <a class="site-header__link" href="${activeKey === 'catalog' ? '#filters' : '/index.html#filters'}">Categories</a>
+        <a class="site-header__link site-header__link--disabled" aria-disabled="true" tabindex="-1">Deals</a>
+        <a class="site-header__link" href="${activeKey === 'catalog' ? '#app-footer' : '/index.html#app-footer'}">About</a>
       </nav>
       <div class="site-header__actions">
-        <button type="button" class="site-header__icon-btn" aria-label="Поиск (скоро)" disabled>
+        <button type="button" class="site-header__icon-btn" aria-label="Search (coming soon)" disabled>
           ${SEARCH_ICON}
         </button>
         <a
           class="site-header__icon-btn cart-link"
           href="/cart.html"
-          aria-label="Корзина"
+          aria-label="Cart"
           ${activeKey === 'cart' ? 'aria-current="page"' : ''}
         >
           ${CART_ICON}

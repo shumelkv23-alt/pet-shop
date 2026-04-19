@@ -30,43 +30,43 @@ export function renderFooter() {
             <span class="site-header__logo-text">PawsStore</span>
           </a>
           <p class="site-footer__tagline">
-            Надёжный источник премиум-товаров для ваших питомцев.
+            Your trusted source for premium pet products.
           </p>
         </div>
 
         <div>
-          <h4 class="site-footer__heading">Быстрые ссылки</h4>
+          <h4 class="site-footer__heading">Quick Links</h4>
           <ul class="site-footer__list">
-            <li><a class="site-footer__link" href="/index.html">Каталог</a></li>
-            <li><a class="site-footer__link" href="#">Новинки</a></li>
-            <li><a class="site-footer__link" href="#">Хиты продаж</a></li>
-            <li><a class="site-footer__link" href="#">Акции</a></li>
+            <li><a class="site-footer__link" href="/index.html">Catalog</a></li>
+            <li><a class="site-footer__link" href="#">New Arrivals</a></li>
+            <li><a class="site-footer__link" href="#">Best Sellers</a></li>
+            <li><a class="site-footer__link" href="#">Deals</a></li>
           </ul>
         </div>
 
         <div>
-          <h4 class="site-footer__heading">Поддержка</h4>
+          <h4 class="site-footer__heading">Support</h4>
           <ul class="site-footer__list">
-            <li><a class="site-footer__link" href="#">Связаться с нами</a></li>
-            <li><a class="site-footer__link" href="#">Доставка</a></li>
-            <li><a class="site-footer__link" href="#">Возврат</a></li>
+            <li><a class="site-footer__link" href="#">Contact Us</a></li>
+            <li><a class="site-footer__link" href="#">Shipping</a></li>
+            <li><a class="site-footer__link" href="#">Returns</a></li>
             <li><a class="site-footer__link" href="#">FAQ</a></li>
           </ul>
         </div>
 
         <div>
-          <h4 class="site-footer__heading">Рассылка</h4>
+          <h4 class="site-footer__heading">Newsletter</h4>
           <p class="site-footer__newsletter-text">
-            Подпишитесь, чтобы получать спец-предложения и новости.
+            Subscribe to get special offers and news.
           </p>
           <form class="site-footer__newsletter-form" onsubmit="event.preventDefault()">
             <input
               class="site-footer__newsletter-input"
               type="email"
-              placeholder="Ваш email"
-              aria-label="Email для рассылки"
+              placeholder="Your email"
+              aria-label="Email for newsletter"
             />
-            <button type="submit" class="site-footer__newsletter-btn" aria-label="Подписаться">
+            <button type="submit" class="site-footer__newsletter-btn" aria-label="Subscribe">
               ${SEND_ICON}
             </button>
           </form>
@@ -74,8 +74,8 @@ export function renderFooter() {
       </div>
 
       <div class="site-footer__bottom">
-        <span>© ${new Date().getFullYear()} PawsStore. Все права защищены.</span>
-        <div class="site-footer__socials" aria-label="Соцсети">
+        <span>© ${new Date().getFullYear()} PawsStore. All rights reserved.</span>
+        <div class="site-footer__socials" aria-label="Social media">
           <a class="site-footer__social" href="#" aria-label="Facebook">${SOCIAL_ICONS.facebook}</a>
           <a class="site-footer__social" href="#" aria-label="Twitter">${SOCIAL_ICONS.twitter}</a>
           <a class="site-footer__social" href="#" aria-label="Instagram">${SOCIAL_ICONS.instagram}</a>

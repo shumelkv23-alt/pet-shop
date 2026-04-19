@@ -4,13 +4,17 @@ import '../../styles/product.css';
 
 import { loadProducts } from '../store/products.js';
 import { formatPrice } from '../lib/format.js';
-import { addItem, getItemQty } from '../store/cart.js';
+import { addItem, getItemQty, updateQty } from '../store/cart.js';
 import { onCartChange } from '../lib/events.js';
 import { renderHeader } from '../components/header.js';
 import { renderFooter } from '../components/footer.js';
 
 renderHeader('product');
 renderFooter();
+
+const CART_ICON = `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>`;
+const PREV_ICON = `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>`;
+const NEXT_ICON = `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>`;
 
 const params = new URLSearchParams(location.search);
 const id = Number(params.get('id'));
@@ -22,136 +26,158 @@ const main = document.querySelector('main');
 if (!product) {
   main.innerHTML = `
     <div class="product-not-found container">
-      <p class="product-not-found__title">Товар не найден</p>
-      <a class="product-not-found__link" href="/index.html">← Вернуться в каталог</a>
+      <p class="product-not-found__title">Product not found</p>
+      <a class="product-not-found__link" href="/index.html">← Back to catalog</a>
     </div>
   `;
 } else {
   document.title = `${product.title} — PawsStore`;
   main.innerHTML = buildPage(product);
   initGallery();
-  initAccordion();
   initAddBtn();
 }
 
 function buildPage(p) {
-  const CATEGORY_LABELS = {
-    food: 'Корм',
-    toys: 'Игрушки',
-    accessories: 'Аксессуары',
-    care: 'Уход',
-  };
+  const CATEGORY_LABELS = { food: 'Food', toys: 'Toys', accessories: 'Accessories', care: 'Care' };
+  const categoryLabel = CATEGORY_LABELS[p.category] ?? p.category;
 
-  const thumbs = p.images
-    .map(
-      (src, i) =>
-        `<button type="button" class="product-gallery__thumb${i === 0 ? ' product-gallery__thumb--active' : ''}" data-index="${i}" aria-label="Фото ${i + 1}">
-          <img src="${src}" alt="" />
-        </button>`,
-    )
+  const dots = p.images
+    .map((_, i) => `<button type="button" class="gallery-dot${i === 0 ? ' gallery-dot--active' : ''}" data-index="${i}" aria-label="Photo ${i + 1}"></button>`)
     .join('');
 
-  const stars = renderStars(p.rating);
+  const highlightsList = (p.highlights ?? [])
+    .map((h) => `<li class="product-highlights__item">• ${escapeHtml(h)}</li>`)
+    .join('');
 
   return `
+    <div class="container">
+      <nav class="product-breadcrumb" aria-label="Breadcrumb">
+        <a class="product-breadcrumb__link" href="/index.html">Home</a>
+        <span class="product-breadcrumb__sep">›</span>
+        <a class="product-breadcrumb__link" href="/index.html">${categoryLabel}</a>
+        <span class="product-breadcrumb__sep">›</span>
+        <span class="product-breadcrumb__current">${escapeHtml(p.title)}</span>
+      </nav>
+    </div>
     <section class="product-page">
       <div class="container product-layout">
+
         <div class="product-gallery">
           <div class="product-gallery__main">
             <img id="gallery-main-img" src="${p.images[0]}" alt="${escapeHtml(p.title)}" />
+            <button type="button" class="gallery-arrow gallery-arrow--prev" id="gallery-prev" aria-label="Previous photo">${PREV_ICON}</button>
+            <button type="button" class="gallery-arrow gallery-arrow--next" id="gallery-next" aria-label="Next photo">${NEXT_ICON}</button>
           </div>
-          <div class="product-gallery__thumbs">${thumbs}</div>
+          <div class="gallery-dots" id="gallery-dots">${dots}</div>
         </div>
+
         <div class="product-info">
-          <div>
-            <span class="product-info__category">${CATEGORY_LABELS[p.category] ?? p.category}</span>
-          </div>
-          <div>
-            <h1 class="product-info__title">${escapeHtml(p.title)}</h1>
-            <p class="product-info__subtitle">${escapeHtml(p.subtitle)}</p>
-          </div>
-          <div class="product-info__rating" aria-label="Рейтинг ${p.rating} из 5">
-            <span class="product-info__stars" aria-hidden="true">${stars}</span>
-            <span>${p.rating.toFixed(1)}</span>
+          <span class="product-info__category">${categoryLabel}</span>
+          <h1 class="product-info__title">${escapeHtml(p.title)}</h1>
+          <div class="product-info__rating" aria-label="Rating ${p.rating} out of 5">
+            <span class="product-info__stars" aria-hidden="true">${renderStars(p.rating)}</span>
+            <span class="product-info__rating-text">${p.rating.toFixed(1)} out of 5 stars</span>
           </div>
           <p class="product-info__price">${formatPrice(p.price)}</p>
-          <button type="button" class="product-info__add-btn" id="product-add-btn" aria-label="Добавить в корзину">
-            В корзину
-          </button>
-          <div class="product-accordion">
-            ${buildAccordion([
-              { title: 'Описание', content: escapeHtml(p.description) },
-              { title: 'Доставка', content: 'Доставка по России от 1 до 7 рабочих дней. Бесплатная доставка при заказе от 3 000 ₽.' },
-              { title: 'Возврат', content: 'Возврат товара в течение 14 дней при сохранении упаковки и товарного вида.' },
-            ])}
+
+          ${highlightsList ? `
+          <div class="product-highlights">
+            <h3 class="product-highlights__title">Key Highlights</h3>
+            <ul class="product-highlights__list">${highlightsList}</ul>
+          </div>` : ''}
+
+          <div class="product-description">
+            <h3 class="product-description__title">Description</h3>
+            <p class="product-description__text">${escapeHtml(p.description)}</p>
           </div>
+
+          <div class="product-quantity">
+            <span class="product-quantity__label">Quantity:</span>
+            <div class="product-quantity__ctrl">
+              <button type="button" class="product-quantity__btn" id="qty-dec" aria-label="Decrease">−</button>
+              <span class="product-quantity__val" id="qty-val">0</span>
+              <button type="button" class="product-quantity__btn" id="qty-inc" aria-label="Increase">+</button>
+            </div>
+          </div>
+
+          <button type="button" class="product-info__add-btn" id="product-add-btn" aria-label="Add to cart">
+            ${CART_ICON}
+            <span id="add-btn-label">Add to Cart</span>
+          </button>
+
+          ${p.specs?.length ? `
+          <div class="product-specs">
+            <div class="product-specs__header">
+              <span class="product-specs__icon" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+              </span>
+              <h3 class="product-specs__title">Technical Specifications</h3>
+            </div>
+            <div class="product-specs__grid">
+              ${p.specs.map((s) => `
+              <div class="product-specs__cell">
+                <svg class="product-specs__cell-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                <div>
+                  <span class="product-specs__cell-label">${escapeHtml(s.label)}</span>
+                  <span class="product-specs__cell-value">${escapeHtml(s.value)}</span>
+                </div>
+              </div>`).join('')}
+            </div>
+          </div>` : ''}
         </div>
+
       </div>
     </section>
   `;
 }
 
-function buildAccordion(items) {
-  const CHEVRON = `<svg class="product-accordion__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>`;
-  return items
-    .map(
-      (item, i) => `
-    <div class="product-accordion__item${i === 0 ? ' product-accordion__item--open' : ''}">
-      <button type="button" class="product-accordion__trigger" aria-expanded="${i === 0}" data-accordion-trigger>
-        ${item.title}
-        ${CHEVRON}
-      </button>
-      <div class="product-accordion__body" role="region">
-        <div class="product-accordion__inner">
-          <p class="product-accordion__content">${item.content}</p>
-        </div>
-      </div>
-    </div>`,
-    )
-    .join('');
-}
+// --- Gallery ---
 
 function initGallery() {
   const mainImg = document.getElementById('gallery-main-img');
-  const thumbs = document.querySelectorAll('.product-gallery__thumb');
-  thumbs.forEach((thumb) => {
-    thumb.addEventListener('click', () => {
-      const idx = Number(thumb.dataset.index);
-      mainImg.src = product.images[idx];
-      thumbs.forEach((t) => t.classList.toggle('product-gallery__thumb--active', t === thumb));
-    });
-  });
+  const dotsContainer = document.getElementById('gallery-dots');
+  const dots = dotsContainer.querySelectorAll('.gallery-dot');
+  let current = 0;
+
+  function goTo(idx) {
+    current = (idx + product.images.length) % product.images.length;
+    mainImg.src = product.images[current];
+    dots.forEach((d, i) => d.classList.toggle('gallery-dot--active', i === current));
+  }
+
+  document.getElementById('gallery-prev').addEventListener('click', () => goTo(current - 1));
+  document.getElementById('gallery-next').addEventListener('click', () => goTo(current + 1));
+  dots.forEach((dot) => dot.addEventListener('click', () => goTo(Number(dot.dataset.index))));
 }
 
-function initAccordion() {
-  document.querySelectorAll('[data-accordion-trigger]').forEach((trigger) => {
-    trigger.addEventListener('click', () => {
-      const item = trigger.closest('.product-accordion__item');
-      const isOpen = item.classList.contains('product-accordion__item--open');
-      item.classList.toggle('product-accordion__item--open', !isOpen);
-      trigger.setAttribute('aria-expanded', String(!isOpen));
-    });
-  });
-}
+// --- Add to cart ---
 
 function initAddBtn() {
   const btn = document.getElementById('product-add-btn');
+  const qtyVal = document.getElementById('qty-val');
+  const qtyDec = document.getElementById('qty-dec');
+  const qtyInc = document.getElementById('qty-inc');
   if (!btn) return;
-  syncAddBtn(btn);
+
+  function syncAll() {
+    const qty = getItemQty(product.id);
+    qtyVal.textContent = String(qty);
+    document.getElementById('add-btn-label').textContent = qty > 0 ? `In Cart: ${qty}` : 'Add to Cart';
+    btn.dataset.state = qty > 0 ? 'added' : 'idle';
+  }
+
   btn.addEventListener('click', () => addItem(product.id));
-  onCartChange(() => syncAddBtn(btn));
+  qtyInc.addEventListener('click', () => addItem(product.id));
+  qtyDec.addEventListener('click', () => {
+    const qty = getItemQty(product.id);
+    if (qty > 0) updateQty(product.id, qty - 1);
+  });
+
+  onCartChange(syncAll);
+  syncAll();
 }
 
-function syncAddBtn(btn) {
-  const qty = getItemQty(product.id);
-  if (qty === 0) {
-    btn.textContent = 'В корзину';
-    btn.dataset.state = 'idle';
-  } else {
-    btn.textContent = `В корзине: ${qty} шт.`;
-    btn.dataset.state = 'added';
-  }
-}
+// --- Helpers ---
 
 function renderStars(rating) {
   const full = Math.floor(rating);
@@ -161,11 +187,5 @@ function renderStars(rating) {
 }
 
 function escapeHtml(value) {
-  return String(value).replace(/[&<>"']/g, (c) => ({
-    '&': '&amp;',
-    '<': '&lt;',
-    '>': '&gt;',
-    '"': '&quot;',
-    "'": '&#39;',
-  })[c]);
+  return String(value).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]);
 }

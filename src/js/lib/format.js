@@ -1,6 +1,6 @@
-const priceFormatter = new Intl.NumberFormat('ru-RU', {
+const priceFormatter = new Intl.NumberFormat('en-US', {
   style: 'currency',
-  currency: 'RUB',
+  currency: 'USD',
   minimumFractionDigits: 0,
   maximumFractionDigits: 0,
 });

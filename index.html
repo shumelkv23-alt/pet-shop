@@ -1,55 +1,86 @@
 <!doctype html>
-<html lang="ru">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>PawsStore — Каталог</title>
+    <title>PawsStore — Catalog</title>
   </head>
   <body>
     <header id="app-header"></header>
     <main>
       <section class="catalog-hero">
         <div class="container">
-          <h1 class="catalog-hero__title">Все товары</h1>
+          <h1 class="catalog-hero__title">All Products</h1>
           <p class="catalog-hero__subtitle">
-            Найдите лучшее для ваших пушистых друзей.
+            Find the best for your furry friends.
           </p>
         </div>
       </section>
-      <section class="catalog">
+      <section id="shop" class="catalog">
         <div class="container catalog-body">
-          <aside class="catalog-sidebar">
+          <aside id="filters" class="catalog-sidebar">
             <h2 class="catalog-sidebar__title">Filters</h2>
             <div class="filter-group">
               <h3 class="filter-group__label">Rating</h3>
-              <label class="filter-check"><input type="radio" name="rating" value="5" class="filter-check__input" /> <span>5+ Stars</span></label>
-              <label class="filter-check"><input type="radio" name="rating" value="4" class="filter-check__input" /> <span>4+ Stars</span></label>
-              <label class="filter-check"><input type="radio" name="rating" value="3" class="filter-check__input" /> <span>3+ Stars</span></label>
+              <label class="filter-check"><input type="checkbox" name="rating" value="5" class="filter-check__input" /> <span>5+ Stars</span></label>
+              <label class="filter-check"><input type="checkbox" name="rating" value="4" class="filter-check__input" /> <span>4+ Stars</span></label>
+              <label class="filter-check"><input type="checkbox" name="rating" value="3" class="filter-check__input" /> <span>3+ Stars</span></label>
             </div>
             <div class="filter-group">
               <h3 class="filter-group__label">Price Range</h3>
               <div class="filter-price">
-                <div class="filter-price__field">
-                  <span class="filter-price__sym">$</span>
-                  <input type="number" class="filter-price__input" id="price-min" min="0" value="0" aria-label="Минимальная цена" />
+                <div class="filter-price__group">
+                  <span class="filter-price__label">Min</span>
+                  <div class="filter-price__field">
+                    <span class="filter-price__sym">$</span>
+                    <input type="number" class="filter-price__input" id="price-min" min="0" value="0" aria-label="Minimum price" />
+                    <div class="filter-price__spin">
+                      <button type="button" class="filter-price__spin-btn" data-target="price-min" data-dir="up" aria-label="Increase minimum price">
+                        <svg width="8" height="6" viewBox="0 0 8 6" fill="none" aria-hidden="true"><path d="M1 5l3-4 3 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                      </button>
+                      <button type="button" class="filter-price__spin-btn" data-target="price-min" data-dir="down" aria-label="Decrease minimum price">
+                        <svg width="8" height="6" viewBox="0 0 8 6" fill="none" aria-hidden="true"><path d="M1 1l3 4 3-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                      </button>
+                    </div>
+                  </div>
                 </div>
                 <span class="filter-price__sep">—</span>
-                <div class="filter-price__field">
-                  <span class="filter-price__sym">$</span>
-                  <input type="number" class="filter-price__input" id="price-max" min="0" value="99999" aria-label="Максимальная цена" />
+                <div class="filter-price__group">
+                  <span class="filter-price__label">Max</span>
+                  <div class="filter-price__field">
+                    <span class="filter-price__sym">$</span>
+                    <input type="number" class="filter-price__input" id="price-max" min="0" value="100" aria-label="Maximum price" />
+                    <div class="filter-price__spin">
+                      <button type="button" class="filter-price__spin-btn" data-target="price-max" data-dir="up" aria-label="Increase maximum price">
+                        <svg width="8" height="6" viewBox="0 0 8 6" fill="none" aria-hidden="true"><path d="M1 5l3-4 3 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                      </button>
+                      <button type="button" class="filter-price__spin-btn" data-target="price-max" data-dir="down" aria-label="Decrease maximum price">
+                        <svg width="8" height="6" viewBox="0 0 8 6" fill="none" aria-hidden="true"><path d="M1 1l3 4 3-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                      </button>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
           </aside>
           <div class="catalog-main">
             <div class="catalog__toolbar">
-              <span class="catalog__count" id="catalog-count">Загрузка…</span>
-              <select class="catalog__sort" id="catalog-sort" aria-label="Сортировка">
-                <option value="default">По умолчанию</option>
-                <option value="price-asc">Цена: дешевле</option>
-                <option value="price-desc">Цена: дороже</option>
-                <option value="rating-desc">Рейтинг: выше</option>
-              </select>
+              <span class="catalog__count" id="catalog-count">Loading…</span>
+              <div class="sort-dropdown" id="catalog-sort">
+                <button class="sort-dropdown__trigger" aria-haspopup="listbox" aria-expanded="false" aria-label="Sort">
+                  <span class="sort-dropdown__prefix">Sort by:</span>
+                  <span class="sort-dropdown__value" id="sort-value">Name (A-Z)</span>
+                  <svg class="sort-dropdown__chevron" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                    <path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </button>
+                <ul class="sort-dropdown__menu" role="listbox">
+                  <li class="sort-dropdown__option sort-dropdown__option--active" data-value="name-asc" role="option" aria-selected="true">Name (A-Z)<svg class="sort-dropdown__check" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8l3.5 3.5L13 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></li>
+                  <li class="sort-dropdown__option" data-value="name-desc" role="option" aria-selected="false">Name (Z-A)</li>
+                  <li class="sort-dropdown__option" data-value="price-asc" role="option" aria-selected="false">Price (Low to High)</li>
+                  <li class="sort-dropdown__option" data-value="price-desc" role="option" aria-selected="false">Price (High to Low)</li>
+                </ul>
+              </div>
             </div>
             <div class="catalog__grid" id="catalog-grid"></div>
           </div>

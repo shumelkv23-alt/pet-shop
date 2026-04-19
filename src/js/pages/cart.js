@@ -18,7 +18,7 @@ const main = document.querySelector('main');
 main.innerHTML = `
   <section class="cart-page">
     <div class="container">
-      <h1 class="cart-page__title">Корзина</h1>
+      <h1 class="cart-page__title">Cart</h1>
       <div class="cart-layout" id="cart-layout"></div>
     </div>
   </section>
@@ -66,11 +66,11 @@ function buildItem({ id, qty }) {
       </div>
       <div class="cart-item__actions">
         <div class="cart-item__qty">
-          <button type="button" class="cart-item__qty-btn" data-action="dec" aria-label="Уменьшить количество">−</button>
+          <button type="button" class="cart-item__qty-btn" data-action="dec" aria-label="Decrease quantity">−</button>
           <span class="cart-item__qty-val" aria-live="polite">${qty}</span>
-          <button type="button" class="cart-item__qty-btn" data-action="inc" aria-label="Увеличить количество">+</button>
+          <button type="button" class="cart-item__qty-btn" data-action="inc" aria-label="Increase quantity">+</button>
         </div>
-        <button type="button" class="cart-item__remove" data-action="remove" aria-label="Удалить из корзины">Удалить</button>
+        <button type="button" class="cart-item__remove" data-action="remove" aria-label="Remove from cart">Remove</button>
       </div>
     </div>
   `;
@@ -79,25 +79,25 @@ function buildItem({ id, qty }) {
 function buildSummary(totals, promoCode) {
   const discountLine = totals.discount > 0
     ? `<div class="cart-summary__line cart-summary__line--discount">
-        <span>Скидка SAVE10</span>
+        <span>Discount SAVE10</span>
         <span>−${formatPrice(totals.discount)}</span>
       </div>`
     : '';
 
   return `
-    <p class="cart-summary__title">Итого</p>
+    <p class="cart-summary__title">Order Summary</p>
     <div class="cart-summary__line">
-      <span>Товары</span>
+      <span>Items</span>
       <span>${formatPrice(totals.subtotal)}</span>
     </div>
     ${discountLine}
     <hr class="cart-summary__divider" />
     <div class="cart-summary__total">
-      <span>К оплате</span>
+      <span>Total</span>
       <span class="cart-summary__total-val">${formatPrice(totals.total)}</span>
     </div>
     ${buildPromo(promoCode)}
-    <button type="button" class="cart-checkout-btn">Оформить заказ</button>
+    <button type="button" class="cart-checkout-btn">Checkout</button>
   `;
 }
 
@@ -106,18 +106,18 @@ function buildPromo(promoCode) {
     return `
       <div class="cart-promo">
         <div class="cart-summary__line cart-summary__line--discount">
-          <span>Промокод <strong>${promoCode}</strong> применён</span>
-          <button type="button" class="cart-promo__remove-btn" id="promo-remove">Убрать</button>
+          <span>Promo code <strong>${promoCode}</strong> applied</span>
+          <button type="button" class="cart-promo__remove-btn" id="promo-remove">Remove</button>
         </div>
       </div>
     `;
   }
   return `
     <div class="cart-promo">
-      <label class="cart-promo__label" for="promo-input">Промокод</label>
+      <label class="cart-promo__label" for="promo-input">Promo code</label>
       <div class="cart-promo__row">
         <input class="cart-promo__input" id="promo-input" type="text" placeholder="SAVE10" autocomplete="off" />
-        <button type="button" class="cart-promo__apply-btn" id="promo-apply">Применить</button>
+        <button type="button" class="cart-promo__apply-btn" id="promo-apply">Apply</button>
       </div>
       <p class="cart-promo__msg" id="promo-msg" aria-live="polite"></p>
     </div>
@@ -129,9 +129,9 @@ function buildEmpty() {
   return `
     <div class="cart-empty">
       ${CART_ICON}
-      <h2 class="cart-empty__title">Корзина пуста</h2>
-      <p class="cart-empty__sub">Добавьте что-нибудь из каталога — ваши питомцы будут рады!</p>
-      <a class="cart-empty__link" href="/index.html">Перейти в каталог</a>
+      <h2 class="cart-empty__title">Your cart is empty</h2>
+      <p class="cart-empty__sub">Add something from the catalog — your pets will love it!</p>
+      <a class="cart-empty__link" href="/index.html">Go to catalog</a>
     </div>
   `;
 }
@@ -172,11 +172,11 @@ function wirePromo(promoCode) {
     if (!code) return;
     const ok = cartStore.applyPromoCode(code);
     if (ok) {
-      msg.textContent = 'Промокод применён — скидка 10%!';
+      msg.textContent = 'Promo code applied — 10% off!';
       msg.className = 'cart-promo__msg cart-promo__msg--ok';
       input.classList.remove('cart-promo__input--error');
     } else {
-      msg.textContent = 'Неверный промокод. Попробуй SAVE10';
+      msg.textContent = 'Invalid promo code. Try SAVE10';
       msg.className = 'cart-promo__msg cart-promo__msg--err';
       input.classList.add('cart-promo__input--error');
     }
