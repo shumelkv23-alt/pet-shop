@@ -3,7 +3,6 @@ import { addItem, getItemQty } from '../store/cart.js';
 import { onCartChange } from '../lib/events.js';
 
 const CART_ICON = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>`;
-
 const CHECK_ICON = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>`;
 
 export function createCard(product) {
@@ -45,15 +44,19 @@ function buildMarkup(product) {
     <a class="product-card__media" href="${href}" tabindex="-1" aria-hidden="true">
       <img src="${product.images[0]}" alt="" loading="lazy" width="600" height="600" />
       <span class="product-card__price-pill">${formatPrice(product.price)}</span>
-      <button type="button" class="product-card__add-btn" aria-label="Add to cart"></button>
     </a>
-    <div class="product-card__body">
-      <a class="product-card__title" href="${href}">${escapeHtml(product.title)}</a>
-      <div class="product-card__rating" aria-label="Rating ${product.rating} out of 5">
-        <span class="product-card__stars" aria-hidden="true">${renderStars(product.rating)}</span>
-        <span class="product-card__rating-count">(${Math.round(product.rating * 10)})</span>
+    <div class="product-card__overlay">
+      <div class="product-card__overlay-info">
+        <a class="product-card__title" href="${href}">${escapeHtml(product.title)}</a>
+        <div class="product-card__rating" aria-label="Rating ${product.rating} out of 5">
+          <span class="product-card__stars" aria-hidden="true">${renderStars(product.rating)}</span>
+          <span class="product-card__rating-count">(${Math.round(product.rating * 10)})</span>
+        </div>
       </div>
-      <p class="product-card__price">${formatPrice(product.price)}</p>
+      <div class="product-card__overlay-footer">
+        <p class="product-card__price">${formatPrice(product.price)}</p>
+        <button type="button" class="product-card__add-btn" aria-label="Add to cart"></button>
+      </div>
     </div>
   `;
 }
