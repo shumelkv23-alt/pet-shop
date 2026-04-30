@@ -142,3 +142,23 @@ document.querySelectorAll('.filter-price__spin-btn').forEach((btn) => {
 });
 
 renderGrid();
+
+// --- Filters accordion: десктоп — всегда раскрыт, планшет — пользовательский контрол ---
+const filtersPanel = document.getElementById('filters-panel');
+if (filtersPanel) {
+  const tabletMq = window.matchMedia('(max-width: 900px)');
+  let userToggled = false;
+  filtersPanel.addEventListener('toggle', () => {
+    if (tabletMq.matches) userToggled = true;
+  });
+  function syncPanel(matches) {
+    if (matches) {
+      if (!userToggled) filtersPanel.open = false;
+    } else {
+      filtersPanel.open = true;
+      userToggled = false;
+    }
+  }
+  syncPanel(tabletMq.matches);
+  tabletMq.addEventListener('change', (e) => syncPanel(e.matches));
+}

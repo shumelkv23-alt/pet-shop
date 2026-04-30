@@ -754,24 +754,38 @@
 }
 
 @media (max-width: 640px) {
+  .cart-page {
+    padding-block: 0 var(--space-section);
+    min-height: 0;
+  }
+
   .cart-page__head {
     flex-direction: column;
     align-items: flex-start;
-  }
-
-  .cart-stepper {
     gap: var(--space-2);
-    font-size: var(--text-sm);
+    padding-block: var(--space-3) var(--space-4);
   }
 
-  .cart-stepper__num {
-    width: 28px;
-    height: 28px;
+  /* На column flex-basis 320px означает высоту — heading
+     раздувается на пустое место. Сбрасываем. */
+  .cart-page__heading {
+    flex: 0 0 auto;
+    width: 100%;
+  }
+
+  /* Stepper на мобилке тратит много места — прячем, оставляем только заголовок */
+  .cart-stepper {
+    display: none;
   }
 
   .cart-shipping-banner {
     flex-wrap: wrap;
     padding: var(--space-3) var(--space-4);
+    margin-bottom: var(--space-4);
+  }
+
+  .cart-empty {
+    padding-block: var(--space-5) var(--space-6);
   }
 
   .cart-item {

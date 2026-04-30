@@ -56,7 +56,7 @@
     "subtitle": "Rubber toy for dogs",
     "category": "toys",
     "price": 5,
-    "rating": 4.3,
+    "rating": 2.3,
     "highlights": ["Natural rubber, bite-resistant", "Built-in squeaker inside", "Great for active fetch play"],
     "specs": [
       { "label": "Material", "value": "Natural rubber" },
@@ -124,7 +124,7 @@
     "subtitle": "For dogs up to 25 kg",
     "category": "accessories",
     "price": 13,
-    "rating": 4.1,
+    "rating": 2.8,
     "highlights": ["5-meter retractable tape", "Stop & lock button", "Ergonomic non-slip handle"],
     "specs": [
       { "label": "Tape Length", "value": "5 meters" },
@@ -175,7 +175,7 @@
     "subtitle": "High-sided, for cats",
     "category": "accessories",
     "price": 8,
-    "rating": 4.0,
+    "rating": 3.2,
     "highlights": ["22 cm high sides keep litter in", "Smooth surface, easy to clean", "Size 52×40×22 cm"],
     "specs": [
       { "label": "Dimensions", "value": "52×40×22 cm" },

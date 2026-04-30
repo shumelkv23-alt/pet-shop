@@ -38,15 +38,45 @@
   border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
   padding: var(--space-5);
+}
+
+.catalog-sidebar__panel {
   display: flex;
   flex-direction: column;
   gap: var(--space-5);
 }
 
 .catalog-sidebar__title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
   font-size: var(--text-xl);
   font-weight: 800;
   color: var(--color-text);
+  list-style: none;
+  cursor: default;
+}
+
+.catalog-sidebar__title::-webkit-details-marker {
+  display: none;
+}
+
+.catalog-sidebar__chevron {
+  color: var(--color-muted);
+  flex-shrink: 0;
+  transition: transform var(--duration-fast) var(--ease-out);
+  display: none;
+}
+
+.catalog-sidebar__panel[open] .catalog-sidebar__chevron {
+  transform: rotate(180deg);
+}
+
+.catalog-sidebar__body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
 }
 
 .filter-group {
@@ -149,6 +179,15 @@
   flex-direction: column;
   border-left: 1.5px solid var(--color-border);
   height: 100%;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--duration-fast) var(--ease-out);
+}
+
+.filter-price__field:hover .filter-price__spin,
+.filter-price__field:focus-within .filter-price__spin {
+  opacity: 1;
+  pointer-events: auto;
 }
 
 .filter-price__spin-btn {
@@ -483,33 +522,42 @@
 
   .catalog-sidebar {
     position: static;
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: var(--space-4);
+    padding: var(--space-3) var(--space-4);
   }
 
+  /* На планшете summary становится кликабельным аккордеоном */
   .catalog-sidebar__title {
+    cursor: pointer;
+    padding-block: var(--space-2);
+  }
+
+  .catalog-sidebar__chevron {
+    display: inline-block;
+  }
+
+  /* Тулбар сортировки — растягиваем */
+  .catalog__toolbar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--space-3);
+  }
+
+  .sort-dropdown {
     width: 100%;
   }
 
-  .filter-group {
-    flex: 1 1 180px;
+  .sort-dropdown__trigger {
+    justify-content: space-between;
   }
 }
 
 @media (max-width: 640px) {
-  .catalog__toolbar {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: var(--space-3);
-  }
-
-  .catalog__sort {
-    width: 100%;
-  }
-
   .catalog__grid {
     grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
     gap: var(--space-3);
+  }
+
+  .catalog__toolbar {
+    padding: var(--space-3) var(--space-4);
   }
 }

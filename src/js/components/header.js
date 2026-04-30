@@ -8,6 +8,10 @@ const SEARCH_ICON = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" 
 
 const CART_ICON = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>`;
 
+const BURGER_ICON = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>`;
+
+const CLOSE_ICON = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>`;
+
 export function renderHeader(activeKey) {
   const mount = document.getElementById('app-header');
   if (!mount) return;
@@ -19,7 +23,7 @@ export function renderHeader(activeKey) {
         <span class="site-header__logo-mark">${PAW_ICON}</span>
         <span class="site-header__logo-text">PawsStore</span>
       </a>
-      <nav class="site-header__nav" aria-label="Main navigation">
+      <nav class="site-header__nav" id="site-header-nav" aria-label="Main navigation">
         <a class="site-header__link" href="${activeKey === 'catalog' ? '#shop' : '/index.html#shop'}">Shop</a>
         <a class="site-header__link" href="${activeKey === 'catalog' ? '#filters' : '/index.html#filters'}">Categories</a>
         <a class="site-header__link site-header__link--disabled" aria-disabled="true" tabindex="-1">Deals</a>
@@ -38,6 +42,17 @@ export function renderHeader(activeKey) {
           ${CART_ICON}
           <span class="cart-badge" data-cart-badge data-empty="true" aria-live="polite">0</span>
         </a>
+        <button
+          type="button"
+          class="site-header__burger"
+          id="site-header-burger"
+          aria-label="Open menu"
+          aria-controls="site-header-nav"
+          aria-expanded="false"
+        >
+          <span class="site-header__burger-icon" data-icon="open">${BURGER_ICON}</span>
+          <span class="site-header__burger-icon" data-icon="close" hidden>${CLOSE_ICON}</span>
+        </button>
       </div>
     </div>
   `;
@@ -47,6 +62,38 @@ export function renderHeader(activeKey) {
     updateBadge(badge, getTotalCount(), { animate: false });
     onCartChange(() => updateBadge(badge, getTotalCount(), { animate: true }));
   }
+
+  initBurger(mount);
+}
+
+function initBurger(mount) {
+  const burger = mount.querySelector('#site-header-burger');
+  const nav = mount.querySelector('#site-header-nav');
+  const iconOpen = burger.querySelector('[data-icon="open"]');
+  const iconClose = burger.querySelector('[data-icon="close"]');
+
+  function setOpen(open) {
+    nav.classList.toggle('site-header__nav--open', open);
+    burger.setAttribute('aria-expanded', String(open));
+    burger.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    iconOpen.hidden = open;
+    iconClose.hidden = !open;
+  }
+
+  burger.addEventListener('click', () => {
+    setOpen(!nav.classList.contains('site-header__nav--open'));
+  });
+
+  // Закрываем при клике по ссылке внутри nav
+  nav.addEventListener('click', (e) => {
+    if (e.target.closest('a')) setOpen(false);
+  });
+
+  // Закрываем при ресайзе обратно на десктоп, чтобы стейт не «зависал»
+  const mq = window.matchMedia('(min-width: 901px)');
+  mq.addEventListener('change', (e) => {
+    if (e.matches) setOpen(false);
+  });
 }
 
 function updateBadge(badge, count, { animate }) {

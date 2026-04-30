@@ -95,7 +95,7 @@ function buildPage(p) {
             <span class="product-quantity__label">Quantity:</span>
             <div class="product-quantity__ctrl">
               <button type="button" class="product-quantity__btn" id="qty-dec" aria-label="Decrease">−</button>
-              <span class="product-quantity__val" id="qty-val">0</span>
+              <span class="product-quantity__val" id="qty-val">1</span>
               <button type="button" class="product-quantity__btn" id="qty-inc" aria-label="Increase">+</button>
             </div>
           </div>
@@ -157,24 +157,49 @@ function initAddBtn() {
   const qtyVal = document.getElementById('qty-val');
   const qtyDec = document.getElementById('qty-dec');
   const qtyInc = document.getElementById('qty-inc');
+  const label = document.getElementById('add-btn-label');
   if (!btn) return;
 
-  function syncAll() {
-    const qty = getItemQty(product.id);
-    qtyVal.textContent = String(qty);
-    document.getElementById('add-btn-label').textContent = qty > 0 ? `In Cart: ${qty}` : 'Add to Cart';
-    btn.dataset.state = qty > 0 ? 'added' : 'idle';
+  // Локальный счётчик: stepper меняет именно его, а корзина обновляется
+  // только по клику на «Add to Cart».
+  let pendingQty = 1;
+
+  function renderStepper() {
+    qtyVal.textContent = String(pendingQty);
   }
 
-  btn.addEventListener('click', () => addItem(product.id));
-  qtyInc.addEventListener('click', () => addItem(product.id));
+  function renderBtn() {
+    const inCart = getItemQty(product.id);
+    label.textContent = inCart > 0 ? `In Cart: ${inCart} — Add ${pendingQty} more` : 'Add to Cart';
+  }
+
+  qtyInc.addEventListener('click', () => {
+    pendingQty += 1;
+    renderStepper();
+    renderBtn();
+  });
   qtyDec.addEventListener('click', () => {
-    const qty = getItemQty(product.id);
-    if (qty > 0) updateQty(product.id, qty - 1);
+    if (pendingQty > 1) {
+      pendingQty -= 1;
+      renderStepper();
+      renderBtn();
+    }
   });
 
-  onCartChange(syncAll);
-  syncAll();
+  btn.addEventListener('click', () => {
+    const inCart = getItemQty(product.id);
+    if (inCart === 0) {
+      // updateQty работает только для уже существующих items, для нового — addItem
+      addItem(product.id);
+      if (pendingQty > 1) updateQty(product.id, pendingQty);
+    } else {
+      updateQty(product.id, inCart + pendingQty);
+    }
+  });
+
+  onCartChange(renderBtn);
+  renderStepper();
+  renderBtn();
 }
 
 // --- Helpers ---
