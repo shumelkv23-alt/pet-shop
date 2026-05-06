@@ -6,11 +6,13 @@
   from   = "/product"
   to     = "/product.html"
   status = 200
+  force  = true
 
 [[redirects]]
   from   = "/cart"
   to     = "/cart.html"
   status = 200
+  force  = true
 
 [[headers]]
   for = "/*"
