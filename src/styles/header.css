@@ -166,6 +166,19 @@
 }
 
 @media (max-width: 900px) {
+  .site-header__inner {
+    gap: var(--space-3);
+  }
+
+  .site-header__actions {
+    gap: var(--space-1);
+  }
+
+  /* Search disabled на мобиле — прячем, чтоб освободить место бургеру */
+  .site-header__actions .site-header__icon-btn[disabled] {
+    display: none;
+  }
+
   .site-header__burger {
     display: inline-flex;
   }
@@ -204,5 +217,28 @@
 
   .site-header__link:hover {
     background: var(--color-surface-alt);
+  }
+}
+
+@media (max-width: 420px) {
+  .site-header__logo {
+    gap: var(--space-2);
+    font-size: var(--text-base);
+  }
+
+  .site-header__logo-mark {
+    width: 34px;
+    height: 34px;
+  }
+
+  .site-header__logo-mark svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .site-header__icon-btn,
+  .site-header__burger {
+    width: 40px;
+    height: 40px;
   }
 }
