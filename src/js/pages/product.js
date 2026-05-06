@@ -32,7 +32,7 @@ if (!product) {
   `;
 } else {
   document.title = `${product.title} — PawsStore`;
-  main.innerHTML = buildPage(product);
+  main.innerHTML = buildPage(product) + buildRelated(product);
   initGallery();
   initAddBtn();
 }
@@ -200,6 +200,34 @@ function initAddBtn() {
   onCartChange(renderBtn);
   renderStepper();
   renderBtn();
+}
+
+// --- Related products ---
+
+function buildRelated(p) {
+  const related = products.filter((x) => x.category === p.category && x.id !== p.id);
+  if (related.length === 0) return '';
+
+  const cards = related.map((r) => `
+    <a class="related-card" href="/product.html?id=${r.id}">
+      <div class="related-card__media">
+        <img src="${r.images[0]}" alt="${escapeHtml(r.title)}" loading="lazy" width="400" height="400" />
+      </div>
+      <div class="related-card__footer">
+        <span class="related-card__title">${escapeHtml(r.title)}</span>
+        <span class="related-card__price">${formatPrice(r.price)}</span>
+      </div>
+    </a>
+  `).join('');
+
+  return `
+    <section class="related-products">
+      <div class="container">
+        <h2 class="related-products__title">Related Products</h2>
+        <div class="related-grid">${cards}</div>
+      </div>
+    </section>
+  `;
 }
 
 // --- Helpers ---
