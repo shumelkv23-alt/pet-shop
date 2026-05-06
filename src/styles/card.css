@@ -132,8 +132,9 @@
 
 .product-card__title {
   font-size: var(--text-base);
-  font-weight: 600;
-  color: var(--color-muted);
+  font-weight: 400;
+  font-style: normal;
+  color: var(--color-text);
   line-height: var(--leading-tight);
   text-decoration: none;
   display: -webkit-box;
@@ -160,7 +161,7 @@
   display: inline-flex;
   gap: 2px;
   color: var(--color-star);
-  font-size: var(--text-base);
+  font-size: var(--text-xl);
   line-height: 1;
   letter-spacing: 1px;
 }
